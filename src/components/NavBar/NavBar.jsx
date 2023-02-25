@@ -63,7 +63,7 @@ const NavBar = () => {
               </Button>
             )}
           </div>
-          {isMobile && "Search..."}
+          {isMobile && "Search....Q"}
         </Toolbar>
       </AppBar>
     </>
