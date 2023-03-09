@@ -21,11 +21,11 @@ export const tmdbApi = createApi({
         if (searchQuery) {
           return `/search/movie?query=${searchQuery}&page=${page}&api_key=${tmdbApiKey}`;
         }
+        // * Get Movies by category-
         if (
           genreIdOrCategoryName &&
           typeof genreIdOrCategoryName === "string"
         ) {
-          // * Get Movies by category-
           return `movie/${genreIdOrCategoryName}?page=${page}&api_key=${tmdbApiKey}`;
         }
 

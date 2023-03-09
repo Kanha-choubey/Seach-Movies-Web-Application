@@ -11,10 +11,10 @@ export const genreOrCategory = createSlice({
     selectGenreOrCategory: (state, action) => {
       // console.log(action.payload);
       state.genreIdOrCategoryName = action.payload;
-      state.searchQuery = " ";
+      state.searchQuery = "";
     },
     searchMovie: (state, action) => {
-      console.log("Hello", action.payload);
+      // console.log("Hello", action.payload);
       state.searchQuery = action.payload;
     },
   },
