@@ -8,7 +8,7 @@ import {
 import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 import { useSelector } from "react-redux";
 import { useGetMoviesQuery } from "../../services/TMDB.js";
-import { MovieList } from "..";
+import { MovieList, Pagination } from "..";
 import { display } from "@mui/system";
 
 const Movies = () => {
@@ -21,16 +21,18 @@ const Movies = () => {
     page,
     searchQuery,
   });
+  const lg = useMediaQuery((theme) => theme.breakpoints.only("lg"));
+  const numberOfMovies = lg ? 16 : 18;
   if (isFetching) {
     return (
-      <Box display="flex" justifyContent="center" alingItems="center">
+      <Box display="flex" justifyContent="center" alignItems="center">
         <CircularProgress />
       </Box>
     );
   }
   if (!data.results.length) {
     return (
-      <Box display="flex" alingItems="center" mt="20px">
+      <Box display="flex" alignItems="center" mt="20px">
         <Typography variant="h5">
           No movie that match that name
           <br />
@@ -43,7 +45,12 @@ const Movies = () => {
   // console.log(data);
   return (
     <div>
-      <MovieList movies={data} />
+      <MovieList movies={data} numberOfMovies={numberOfMovies} />
+      <Pagination
+        currentPage={page}
+        setPage={setPage}
+        totalPages={data.total_pages}
+      />
     </div>
   );
 };

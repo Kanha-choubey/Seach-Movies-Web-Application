@@ -1,5 +1,5 @@
 import { makeStyles } from "@mui/styles";
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   root: {
     display: "flex",
     height: "100%",
